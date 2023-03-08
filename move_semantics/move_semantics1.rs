@@ -1,15 +1,13 @@
-// move_semantics1.rs
-// Execute `rustlings hint move_semantics1` or use the `hint` watch subcommand for a hint.
-
-// I AM NOT DONE
-
 fn main() {
     let vec0 = Vec::new();
 
-    let vec1 = fill_vec(vec0);
+    // Must declare vec1 as mutable (`mut`) here so it can be borrowed as mutable later
+    let mut vec1 = fill_vec(vec0);
 
     println!("{} has length {} content `{:?}`", "vec1", vec1.len(), vec1);
 
+    // vec1 is borrowed as mutable here. It can be borrowed in this way here because the variable
+    // was declared as `mut`
     vec1.push(88);
 
     println!("{} has length {} content `{:?}`", "vec1", vec1.len(), vec1);
