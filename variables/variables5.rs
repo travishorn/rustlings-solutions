@@ -1,11 +1,9 @@
-// variables5.rs
-// Execute `rustlings hint variables5` or use the `hint` watch subcommand for a hint.
-
-// I AM NOT DONE
-
 fn main() {
-    let number = "T-H-R-E-E"; // don't change this line
+    let number = "T-H-R-E-E";
     println!("Spell a Number : {}", number);
-    number = 3; // don't rename this variable
+
+    // Use "shadowing" to declare a new variable using the same name as a previous variable.
+    // Shadow a variable by using `let` again
+    let number = 3;
     println!("Number plus two is : {}", number + 2);
 }
