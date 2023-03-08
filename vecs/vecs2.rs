@@ -1,30 +1,30 @@
-// vecs2.rs
-// A Vec of even numbers is given. Your task is to complete the loop
-// so that each number in the Vec is multiplied by 2.
-//
-// Make me pass the test!
-//
-// Execute `rustlings hint vecs2` or use the `hint` watch subcommand for a hint.
-
-// I AM NOT DONE
+// vec_loop and vec_map both take vector and multiply all its elements by 2.
+// vec_loop uses mutations and vec_map does not
 
 fn vec_loop(mut v: Vec<i32>) -> Vec<i32> {
+    // the `iter_mut` method provides mutable references to each element in the vector
     for i in v.iter_mut() {
-        // TODO: Fill this up so that each element in the Vec `v` is
-        // multiplied by 2.
-        ???
+        // Multiply each element in the vector by 2
+        // `*` is the dereference operator that dereferences the iterator `i`, giving access to the
+        // actual value stored at that memory location. `*= 2` sets a value to itself muliplied by
+        // 2.
+        *i *= 2
     }
 
-    // At this point, `v` should be equal to [4, 8, 12, 16, 20].
+    // `v` is equal to the original given v, with all value multiplied by 2.
     v
 }
 
 fn vec_map(v: &Vec<i32>) -> Vec<i32> {
-    v.iter().map(|num| {
-        // TODO: Do the same thing as above - but instead of mutating the
-        // Vec, you can just return the new number!
-        ???
-    }).collect()
+    // Iterate over the given vector `v`
+    v.iter()
+        // map each value to something else
+        .map(|num| {
+            // That "something else" in this case is the value itself multiplied by 2
+            num * 2
+        })
+        // The `collect()` method takes an iterator and produces a collection (such as a vector)
+        .collect()
 }
 
 #[cfg(test)]
