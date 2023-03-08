@@ -1,10 +1,6 @@
-// variables2.rs
-// Execute `rustlings hint variables2` or use the `hint` watch subcommand for a hint.
-
-// I AM NOT DONE
-
 fn main() {
-    let x;
+    // Variables declared with `let` must be given a value before they can be read
+    let x = 10;
     if x == 10 {
         println!("x is ten!");
     } else {
