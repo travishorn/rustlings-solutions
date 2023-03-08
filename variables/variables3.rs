@@ -1,9 +1,6 @@
-// variables3.rs
-// Execute `rustlings hint variables3` or use the `hint` watch subcommand for a hint.
-
-// I AM NOT DONE
-
 fn main() {
-    let x: i32;
+    // Variables can be given a type when delared, but still need to be assigned a value before they
+    // are read
+    let x: i32 = 0;
     println!("Number {}", x);
 }
