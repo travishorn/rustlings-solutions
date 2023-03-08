@@ -1,11 +1,11 @@
-// enums1.rs
-// No hints this time! ;)
-
-// I AM NOT DONE
-
+// `enum`s  define a type that can only take on one of several specified values.
+// `Message` is an enum type that has four variants: Quit, Echo, Move, and ChangeColor
 #[derive(Debug)]
 enum Message {
-    // TODO: define a few types of messages as used below
+    Quit,
+    Echo,
+    Move,
+    ChangeColor,
 }
 
 fn main() {
