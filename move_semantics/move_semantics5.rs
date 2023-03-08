@@ -1,15 +1,14 @@
-// move_semantics5.rs
-// Make me compile only by reordering the lines in `main()`, but without
-// adding, changing or removing any of them.
-// Execute `rustlings hint move_semantics5` or use the `hint` watch subcommand for a hint.
-
-// I AM NOT DONE
-
 fn main() {
     let mut x = 100;
+
+    // Only one mutable reference to a variable can be active at a time.
+    // Since `y` is a mutable reference to `x`, we need to do things with it now...
     let y = &mut x;
-    let z = &mut x;
     *y += 100;
+
+    // ...before we make another mutable reference to x and do something else with it.
+    let z = &mut x;
     *z += 1000;
+
     assert_eq!(x, 1200);
 }
