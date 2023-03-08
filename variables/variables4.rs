@@ -1,11 +1,8 @@
-// variables4.rs
-// Execute `rustlings hint variables4` or use the `hint` watch subcommand for a hint.
-
-// I AM NOT DONE
-
 fn main() {
-    let x = 3;
+    // Variables are immutable by default. If you need to assign them more than once, use the `mut`
+    // keyword.
+    let mut x = 3;
     println!("Number {}", x);
-    x = 5; // don't change this line
+    x = 5;
     println!("Number {}", x);
 }
