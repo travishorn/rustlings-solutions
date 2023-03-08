@@ -1,14 +1,12 @@
-// vecs1.rs
-// Your task is to create a `Vec` which holds the exact same elements
-// as in the array `a`.
-// Make me compile and pass the test!
-// Execute `rustlings hint vecs1` or use the `hint` watch subcommand for a hint.
+// Create a `Vec` which holds the exact same elements as in the array `a`.
 
-// I AM NOT DONE
+// While arrays are always a fixed value, vectors are similar, but their size can be changed.
 
 fn array_and_vec() -> ([i32; 4], Vec<i32>) {
     let a = [10, 20, 30, 40]; // a plain array
-    let v = // TODO: declare your vector here with the macro for vectors
+
+    // Vectors can be created with the `vec!` macro or with `Vec::new()`
+    let v = vec![10, 20, 30, 40]; // a vector
 
     (a, v)
 }
