@@ -1,8 +1,5 @@
-// functions1.rs
-// Execute `rustlings hint functions1` or use the `hint` watch subcommand for a hint.
-
-// I AM NOT DONE
-
 fn main() {
+    // A function must exist before it can be called
+    fn call_me() {}
     call_me();
 }
