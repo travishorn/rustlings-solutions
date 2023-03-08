@@ -1,9 +1,8 @@
-// intro2.rs
-// Make the code print a greeting to the world.
-// Execute `rustlings hint intro2` or use the `hint` watch subcommand for a hint.
-
-// I AM NOT DONE
+// Print a greeting to the world.
 
 fn main() {
-    println!("Hello {}!");
+    // println! is a macro that prints formatted text to the terminal
+    // {} is a placeholder
+    // {} is substituted for the string "World" at runtime
+    println!("Hello {}!", "World");
 }
