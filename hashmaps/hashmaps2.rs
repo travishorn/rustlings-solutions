@@ -1,17 +1,7 @@
-// hashmaps2.rs
-
-// A basket of fruits in the form of a hash map is given. The key
-// represents the name of the fruit and the value represents how many
-// of that particular fruit is in the basket. You have to put *MORE
-// THAN 11* fruits in the basket. Three types of fruits - Apple (4),
-// Mango (2) and Lychee (5) are already given in the basket. You are
-// not allowed to insert any more of these fruits!
-//
-// Make me pass the tests!
-//
-// Execute `rustlings hint hashmaps2` or use the `hint` watch subcommand for a hint.
-
-// I AM NOT DONE
+// A basket of fruits in the form of a hash map is given. The key represents the name of the fruit
+// and the value represents how many of that particular fruit is in the basket. We put *MORE THAN
+// 11* fruits in the basket. Three types of fruits - Apple (4), Mango (2) and Lychee (5) are already
+// given in the basket. We insert 5 each of the other, missing fruits.
 
 use std::collections::HashMap;
 
@@ -34,9 +24,12 @@ fn fruit_basket(basket: &mut HashMap<Fruit, u32>) {
     ];
 
     for fruit in fruit_kinds {
-        // TODO: Put new fruits if not already present. Note that you
-        // are not allowed to put any type of fruit that's already
-        // present!
+        // `entry()` gets the entry in the hashmap whose key is the current `fruit`.
+        // If the entry is empty, it returns the `Entry::Vacant` value.
+        // `or_insert()` will insert a value of `5` if the entry is empty. Otherwise it will return
+        // a mutable reference to the existing value. Here, we don't care about the return value so
+        // we just dont do anything with it.
+        basket.entry(fruit).or_insert(5);
     }
 }
 
