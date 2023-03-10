@@ -1,35 +1,31 @@
-// iterators2.rs
-// In this exercise, you'll learn some of the unique advantages that iterators
-// can offer. Follow the steps to complete the exercise.
-// Execute `rustlings hint iterators2` or use the `hint` watch subcommand for a hint.
+// Some of the unique advantages that iterators can offer.
 
-// I AM NOT DONE
-
-// Step 1.
-// Complete the `capitalize_first` function.
 // "hello" -> "Hello"
 pub fn capitalize_first(input: &str) -> String {
     let mut c = input.chars();
     match c.next() {
         None => String::new(),
-        Some(first) => ???,
+        // As long as there is a first character, convert it to a string and then uppercase it
+        Some(first) => format!("{}{}", first.to_string().to_uppercase(), c.as_str()),
     }
 }
 
-// Step 2.
 // Apply the `capitalize_first` function to a slice of string slices.
 // Return a vector of strings.
 // ["hello", "world"] -> ["Hello", "World"]
 pub fn capitalize_words_vector(words: &[&str]) -> Vec<String> {
-    vec![]
+    // Turn the vector into an iterator; map over the iterator; for each word, capitalize_first;
+    // collect the values into a vector
+    words.iter().map(|word| capitalize_first(word)).collect()
 }
 
-// Step 3.
 // Apply the `capitalize_first` function again to a slice of string slices.
 // Return a single string.
 // ["hello", " ", "world"] -> "Hello World"
 pub fn capitalize_words_string(words: &[&str]) -> String {
-    String::new()
+    // Take advantage of the previously-written `capitalize_words_vector`, then `join()` the
+    // resulting vector into a single string with no separators
+    capitalize_words_vector(words).join("")
 }
 
 #[cfg(test)]
