@@ -1,16 +1,14 @@
-// traits3.rs
+// Implements the Licensed trait for both structures and have them return the same information
+// without writing the same function twice.
 //
-// Your task is to implement the Licensed trait for
-// both structures and have them return the same
-// information without writing the same function twice.
-//
-// Consider what you can add to the Licensed trait.
-// Execute `rustlings hint traits3` or use the `hint` watch subcommand for a hint.
-
-// I AM NOT DONE
+// When both structures implement the `Licensed` trait, they both get access to the
+// `licensing_info()` function, which returns the `String` "Some information".
 
 pub trait Licensed {
-    fn licensing_info(&self) -> String;
+    fn licensing_info(&self) -> String {
+        // Return the `String` "Some information"
+        String::from("Some information")
+    }
 }
 
 struct SomeSoftware {
