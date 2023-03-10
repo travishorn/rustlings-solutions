@@ -1,7 +1,6 @@
 // When performing operations on elements within a collection, iterators are essential.
 // This module helps you get familiar with the structure of using an iterator and
 // how to go through elements within an iterable collection.
-// I AM NOT DONE
 
 fn main() {
     let my_fav_fruits = vec!["banana", "custard apple", "avocado", "peach", "raspberry"];
