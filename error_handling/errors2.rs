@@ -16,13 +16,13 @@ pub fn total_cost(item_quantity: &str) -> Result<i32, ParseIntError> {
     let qty = item_quantity.parse::<i32>();
 
     // Use a match expression to determine if the result of the `parse` was an error. If so, return
-    // that same error (aka propogating the error). Otherwise, if the result is `Ok`, do the math.
+    // that same error (aka propagating the error). Otherwise, if the result is `Ok`, do the math.
     match qty {
         Err(e) => Err(e),
         Ok(num) => Ok(num * cost_per_item + processing_fee),
     }
 
-    // There is a shortcut to doing the above, since all we're doing is propogating the error if one
+    // There is a shortcut to doing the above, since all we're doing is propagating the error if one
     // exists. You can add a `?` operator to the `parse`.
     // let qty = item_quantity.parse::<i32>()?;
     //
