@@ -1,16 +1,16 @@
-// This powerful wrapper provides the ability to store a positive integer value.
-// Rewrite it using generics so that it supports wrapping ANY type.
+// This powerful wrapper provides the ability to store ANY type.
 
-// Execute `rustlings hint generics2` or use the `hint` watch subcommand for a hint.
-
-// I AM NOT DONE
-
-struct Wrapper {
-    value: u32,
+// To use a generic type on a struct, add `<T>` after the name
+struct Wrapper<T> {
+    // Now we can use `T` (the generic type) when defining types where you'd normally see something
+    // like `u32`, etc.
+    value: T,
 }
 
-impl Wrapper {
-    pub fn new(value: u32) -> Self {
+// In the implementation of the struct, we must add `<T>` after both `impl` and the name
+impl<T> Wrapper<T> {
+    // Now we can use `T` (the generic type) when annotating function parameters
+    pub fn new(value: T) -> Self {
         Wrapper { value }
     }
 }
