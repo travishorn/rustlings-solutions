@@ -1,29 +1,29 @@
 fn main() {
-    let vec0 = Vec::new();
+    // Method 3: Make `fill_vec` *mutably* borrow a reference to its argument (which will need to be
+    // mutable), modify it directly, then not return anything. Then you can get rid of `vec1`
+    // entirely -- note that this will change what gets printed by the first `println!`
 
-    // Method 2: Make `fill_vec` borrow its argument instead of taking ownership of it, and then
-    // copy the data within the function in order to return an owned `Vec<i32>`
-    //
-    // Once we pass `vec0` to `fill_vec()`, we can no longer access it in this scope. We can fix
-    // this by passing it as a reference
-    let mut vec1 = fill_vec(&vec0);
+    // `vec0` must be mutable so we can modify it directly
+    let mut vec0 = Vec::new();
+    
+    // `vec1` is no longer needed. Instead, we pass `vec0` mutably to `fill_vec()` and allow it to
+    // modify it directly.
+    fill_vec(&mut vec0);
 
     // Do not change the following line!
     println!("{} has length {} content `{:?}`", "vec0", vec0.len(), vec0);
 
-    vec1.push(88);
+    // Push to `vec0` since `vec1` is no longer present with this method
+    vec0.push(88);
 
-    println!("{} has length {} content `{:?}`", "vec1", vec1.len(), vec1);
+    // Same here. Everywhere that `vec1` appeared need to be changed to `vec0`
+    println!("{} has length {} content `{:?}`", "vec0", vec0.len(), vec0);
 }
 
-// Change the argument type to accept a reference
-fn fill_vec(vec: &Vec<i32>) -> Vec<i32> {
-    // Shadow the `vec` variable with a clone of it's original value
-    let mut vec = vec.clone();
-
+// Take a mutable reference. Return nothing since we are modifying the argument directly
+fn fill_vec(vec: &mut Vec<i32>) {
+    // Simply push to the vector directly
     vec.push(22);
     vec.push(44);
     vec.push(66);
-
-    vec
 }
