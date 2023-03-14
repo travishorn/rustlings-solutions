@@ -1,6 +1,6 @@
 # rustlings Solutions 🦀❤️
 
-These are my solutions to the `rustlings` exercises.
+These are my solutions to the `rustlings` exercises (version 5.4.0).
 
 The `rustlings` project contains small exercises to get you used to reading and
 writing Rust code. This includes reading and responding to compiler messages!

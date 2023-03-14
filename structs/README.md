@@ -1,6 +1,7 @@
 # Structs
 
-Rust has three struct types: a classic C struct, a tuple struct, and a unit struct.
+Rust has three struct types: a classic C struct, a tuple struct, and a unit
+struct.
 
 ## Further information
 
