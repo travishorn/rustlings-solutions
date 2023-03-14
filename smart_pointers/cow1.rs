@@ -1,11 +1,7 @@
-// cow1.rs
-
-// This exercise explores the Cow, or Clone-On-Write type.
-// Cow is a clone-on-write smart pointer.
-// It can enclose and provide immutable access to borrowed data, and clone the data lazily when mutation or ownership is required.
-// The type is designed to work with general borrowed data via the Borrow trait.
-
-// I AM NOT DONE
+// This exercise explores the Cow, or Clone-On-Write type. Cow is a clone-on-write smart pointer. It
+// can enclose and provide immutable access to borrowed data, and clone the data lazily when
+// mutation or ownership is required. The type is designed to work with general borrowed data via
+// the Borrow trait.
 
 use std::borrow::Cow;
 
@@ -41,8 +37,8 @@ fn main() {
     let slice = vec![-1, 0, 1];
     let mut input = Cow::from(slice);
     match abs_all(&mut input) {
-        // TODO
-        Cow::Borrowed(_) => println!("I own this slice!"),
+        // Check for ownership with `Cow::Owned(_)`. This pointer has always owned its data
+        Cow::Owned(_) => println!("I own this slice!"),
         _ => panic!("expected borrowed value"),
     }
 }
