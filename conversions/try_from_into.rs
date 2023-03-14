@@ -1,9 +1,8 @@
-// try_from_into.rs
-// TryFrom is a simple and safe type conversion that may fail in a controlled way under some circumstances.
-// Basically, this is the same as From. The main difference is that this should return a Result type
-// instead of the target type itself.
+// TryFrom is a simple and safe type conversion that may fail in a controlled way under some
+// circumstances. Basically, this is the same as From. The main difference is that this should
+// return a Result type instead of the target type itself.
+
 // You can read more about it at https://doc.rust-lang.org/std/convert/trait.TryFrom.html
-// Execute `rustlings hint try_from_into` or use the `hint` watch subcommand for a hint.
 
 use std::convert::{TryFrom, TryInto};
 
@@ -23,21 +22,26 @@ enum IntoColorError {
     IntConversion,
 }
 
-// I AM NOT DONE
+// Returns an Ok result of inner type Color. There are implementations for a tuple of three
+// integers, an array of three integers, and a slice of integers.
 
-// Your task is to complete this implementation
-// and return an Ok result of inner type Color.
-// You need to create an implementation for a tuple of three integers,
-// an array of three integers, and a slice of integers.
-//
-// Note that the implementation for tuple and array will be checked at compile time,
-// but the slice implementation needs to check the slice length!
-// Also note that correct RGB color values must be integers in the 0..=255 range.
+// Note that the implementation for tuple and array will be checked at compile time, but the slice
+// implementation checks the slice length. Also note that correct RGB color values must be integers
+// in the 0..=255 range.
 
 // Tuple implementation
 impl TryFrom<(i16, i16, i16)> for Color {
     type Error = IntoColorError;
     fn try_from(tuple: (i16, i16, i16)) -> Result<Self, Self::Error> {
+        Ok(Color {
+            // Use the standard library `u8::try_from()` to try to convert each tuple element from
+            // i16 into u8. Use `map_err()` to map over a possible error and return the appropriate
+            // error. Use the `?` operator to propagate the error up to the `Color` `TryFrom`
+            // implementation
+            red: u8::try_from(tuple.0).map_err(|_| IntoColorError::IntConversion)?,
+            green: u8::try_from(tuple.1).map_err(|_| IntoColorError::IntConversion)?,
+            blue: u8::try_from(tuple.2).map_err(|_| IntoColorError::IntConversion)?,
+        })
     }
 }
 
@@ -45,6 +49,12 @@ impl TryFrom<(i16, i16, i16)> for Color {
 impl TryFrom<[i16; 3]> for Color {
     type Error = IntoColorError;
     fn try_from(arr: [i16; 3]) -> Result<Self, Self::Error> {
+        Ok(Color {
+            // Same thing, but accessing values from an array, rather than a tuple
+            red: u8::try_from(arr[0]).map_err(|_| IntoColorError::IntConversion)?,
+            green: u8::try_from(arr[1]).map_err(|_| IntoColorError::IntConversion)?,
+            blue: u8::try_from(arr[2]).map_err(|_| IntoColorError::IntConversion)?,
+        })
     }
 }
 
@@ -52,6 +62,18 @@ impl TryFrom<[i16; 3]> for Color {
 impl TryFrom<&[i16]> for Color {
     type Error = IntoColorError;
     fn try_from(slice: &[i16]) -> Result<Self, Self::Error> {
+        // Since we don't know the size of the slice at compile time, check that it is exactly three
+        // first. If not, return the appropriate error.
+        if slice.len() != 3 {
+            return Err(IntoColorError::BadLen);
+        }
+
+        // If all good, follow the same pattern as above
+        Ok(Color {
+            red: u8::try_from(slice[0]).map_err(|_| IntoColorError::IntConversion)?,
+            green: u8::try_from(slice[1]).map_err(|_| IntoColorError::IntConversion)?,
+            blue: u8::try_from(slice[2]).map_err(|_| IntoColorError::IntConversion)?,
+        })
     }
 }
 
