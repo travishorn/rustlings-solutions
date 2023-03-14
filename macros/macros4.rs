@@ -1,15 +1,12 @@
-// macros4.rs
-// Execute `rustlings hint macros4` or use the `hint` watch subcommand for a hint.
-
-// I AM NOT DONE
-
 macro_rules! my_macro {
+    // Macros use a pattern matching pattern similar to a `match` expression.
+    // Make sure to separate arms of the macro with semicolons `;`
     () => {
         println!("Check out my macro!");
-    }
+    };
     ($val:expr) => {
         println!("Look at this other macro: {}", $val);
-    }
+    };
 }
 
 fn main() {
