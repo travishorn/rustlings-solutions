@@ -1,9 +1,12 @@
 fn main() {
     let vec0 = Vec::new();
 
-    // Once we pass `vec0` to `fill_vec()`, we can no longer access it in this scope.
-    // We can fix this by using the `clone` method, which makes a separate copy of the data that's
-    // in `vec0` and pass that instead
+    // Method 1: Make another, separate version of  the data that's in `vec0` and pass that to
+    // `fill_vec` instead.
+    //
+    // Once we pass `vec0` to `fill_vec()`, we can no longer access it in this scope. We can fix
+    // this by using the `clone` method, which makes a separate copy of the data that's in `vec0`
+    // and pass that instead
     let mut vec1 = fill_vec(vec0.clone());
 
     // Do not change the following line!
