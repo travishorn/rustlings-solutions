@@ -1,16 +1,14 @@
-// Type casting in Rust is done via the usage of the `as` operator.
-// Please note that the `as` operator is not only used when type casting.
-// It also helps with renaming imports.
-//
-// The goal is to make sure that the division does not fail to compile
-// and returns the proper type.
-// Execute `rustlings hint using_as` or use the `hint` watch subcommand for a hint.
+// Type casting in Rust is done via the usage of the `as` operator. Please note that the `as`
+// operator is not only used when type casting. It also helps with renaming imports.
 
-// I AM NOT DONE
+// The goal is to make sure that the division does not fail to compile and returns the proper type.
 
 fn average(values: &[f64]) -> f64 {
     let total = values.iter().sum::<f64>();
-    total / values.len()
+
+    // `len()` returns a `usize` but can be converted to an `f64` with `as` so it matches `total`'s
+    // type which enables division.
+    total / values.len() as f64
 }
 
 fn main() {
