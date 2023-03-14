@@ -1,16 +1,7 @@
-// iterators5.rs
-// Let's define a simple model to track Rustlings exercise progress. Progress
-// will be modelled using a hash map. The name of the exercise is the key and
-// the progress is the value. Two counting functions were created to count the
-// number of exercises with a given progress. These counting functions use
-// imperative style for loops. Recreate this counting functionality using
-// iterators. Only the two iterator methods (count_iterator and
-// count_collection_iterator) need to be modified.
-// Execute `rustlings hint iterators5` or use the `hint` watch subcommand for a hint.
-//
-// Make the code compile and the tests pass.
-
-// I AM NOT DONE
+// A simple model to track Rustlings exercise progress. Progress is modelled using a hash map. The
+// name of the exercise is the key and the progress is the value. Four counting functions exist to
+// count the number of exercises with a given progress. Two of the functions use imperative style
+// `for` loops. The other two use iterators.
 
 use std::collections::HashMap;
 
@@ -32,9 +23,14 @@ fn count_for(map: &HashMap<String, Progress>, value: Progress) -> usize {
 }
 
 fn count_iterator(map: &HashMap<String, Progress>, value: Progress) -> usize {
-    // map is a hashmap with String keys and Progress values.
-    // map = { "variables1": Complete, "from_str": None, ... }
-    todo!();
+    // Starting with the reference to the hashmap,
+    // Create an iterator over the values,
+    // Filter them by comparing each to the given value,
+    // Then count the filtered values.
+    
+    //Note: Creating a reference to `val` like this  is almost always necessary when working with
+    // closures on iterators. Of course, you must dereference it before comparing.
+    map.values().filter(|&val| *val == value).count()
 }
 
 fn count_collection_for(collection: &[HashMap<String, Progress>], value: Progress) -> usize {
@@ -50,10 +46,12 @@ fn count_collection_for(collection: &[HashMap<String, Progress>], value: Progres
 }
 
 fn count_collection_iterator(collection: &[HashMap<String, Progress>], value: Progress) -> usize {
-    // collection is a slice of hashmaps.
-    // collection = [{ "variables1": Complete, "from_str": None, ... },
-    //     { "variables2": Complete, ... }, ... ]
-    todo!();
+    // Starting with the collection,
+    // Convert it to an iterator
+    // Fold its values, starting at 0
+    // Add the result of `count_iterator()` to the accumulator
+    // Give `count_iterator()` a reference to the map and the given `Progress` we're looking for
+    collection.iter().fold(0, |acc, map| acc + count_iterator(&map, value))
 }
 
 #[cfg(test)]
