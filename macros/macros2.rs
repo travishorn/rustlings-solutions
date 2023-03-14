@@ -1,14 +1,11 @@
-// macros2.rs
-// Execute `rustlings hint macros2` or use the `hint` watch subcommand for a hint.
-
-// I AM NOT DONE
-
-fn main() {
-    my_macro!();
-}
-
+// Macros must be defined before they are used. It is common practice to place macro definitions at
+// the top of a file.
 macro_rules! my_macro {
     () => {
         println!("Check out my macro!");
     };
+}
+
+fn main() {
+    my_macro!();
 }
